@@ -25,7 +25,14 @@ class StoreGeneralInquiryRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:30'],
-            'message' => ['required', 'string', 'min:10', 'max:2000'],
+            'message' => ['required', 'string', 'min:5', 'max:2000'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'message.min' => 'Please enter at least 5 characters for your message.',
         ];
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Inquiry;
 use App\Models\User;
 use App\Notifications\SystemNotification;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Notification;
 
 class InquiryController extends Controller
 {
@@ -31,6 +32,13 @@ class InquiryController extends Controller
                 url: route('admin.inquiries.show', $inquiry)
             )));
 
+        Notification::route('mail', $inquiry->email)
+            ->notify(new SystemNotification(
+                title: 'We received your inquiry',
+                body: 'Thanks for reaching out to FrontHire. Our team will contact you soon.',
+                url: route('contact')
+            ));
+
         return back()->with('success', 'Your inquiry was submitted. Our team will contact you soon.');
     }
 
@@ -53,6 +61,13 @@ class InquiryController extends Controller
                 body: "New employer inquiry from {$inquiry->email}.",
                 url: route('admin.inquiries.show', $inquiry)
             )));
+
+        Notification::route('mail', $inquiry->email)
+            ->notify(new SystemNotification(
+                title: 'Employer inquiry received',
+                body: 'Thank you for your staffing request. FrontHire will follow up with options shortly.',
+                url: route('employers')
+            ));
 
         return back()->with('success', 'Thanks for your request. We will follow up with staffing options.');
     }

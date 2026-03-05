@@ -24,7 +24,7 @@
             <div class="relative mx-auto flex min-h-screen w-full max-w-lg flex-col justify-center px-4 py-10 sm:px-6">
                 <a href="{{ route('home') }}" class="mx-auto mb-6 flex items-center gap-3 rounded-2xl border border-emerald-200/90 bg-white/88 px-5 py-3 shadow-lg shadow-emerald-900/20 backdrop-blur-sm" data-aos="zoom-in" data-aos-delay="80">
                     <x-application-logo class="h-12 w-auto" />
-                    <span class="font-heading text-3xl font-bold tracking-tight text-emerald-950">FrontHire</span>
+                    <span class="font-heading text-3xl font-bold tracking-tight text-white">FrontHire</span>
                 </a>
 
                 <div class="rounded-3xl border border-emerald-200 bg-white p-6 shadow-2xl shadow-emerald-900/30 sm:p-8" data-aos="fade-up" data-aos-delay="120">

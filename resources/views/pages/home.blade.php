@@ -156,7 +156,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('inquiries.general.store') }}" class="space-y-4">
+            <form method="POST" action="{{ route('inquiries.general.store') }}" class="space-y-4" x-data="{ submitting: false }" @submit="submitting = true">
                 @csrf
                 <div>
                     <div class="floating-group">
@@ -185,12 +185,28 @@
 
                 <div>
                     <div class="floating-group">
-                        <textarea id="message" name="message" rows="5" required class="floating-input" placeholder=" ">{{ old('message') }}</textarea>
+                        <textarea id="message" name="message" rows="5" required minlength="5" class="floating-input" placeholder=" ">{{ old('message') }}</textarea>
                         <label for="message" class="floating-label">Message</label>
                     </div>
+                    <p class="mt-1 text-xs font-medium text-slate-500">Minimum 5 characters.</p>
                     @error('message') <p class="form-error">{{ $message }}</p> @enderror
                 </div>
-                <button type="submit" class="btn-primary w-full justify-center">Send Message</button>
+                <button
+                    type="submit"
+                    :disabled="submitting"
+                    :class="submitting ? 'cursor-not-allowed opacity-80' : ''"
+                    :aria-busy="submitting"
+                    class="btn-primary w-full justify-center"
+                >
+                    <span x-show="!submitting">Send Message</span>
+                    <span x-show="submitting" class="inline-flex items-center gap-2">
+                        <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                            <circle class="opacity-30" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3"></circle>
+                            <path d="M12 3a9 9 0 0 1 9 9" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path>
+                        </svg>
+                        Sending...
+                    </span>
+                </button>
             </form>
         </div>
     </div>

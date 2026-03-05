@@ -11,7 +11,7 @@ class StoreResumeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user() !== null;
+        return $this->user() !== null && $this->user()->isJobSeeker();
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreResumeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'resume' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:5120'],
+            'resume' => [
+                'required',
+                'file',
+                'mimes:pdf,doc,docx',
+                'mimetypes:application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'max:5120',
+            ],
         ];
     }
 }

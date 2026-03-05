@@ -35,7 +35,6 @@
             <h2 class="font-heading text-xl font-bold text-slate-900">Quick Links</h2>
             <div class="mt-4 space-y-2">
                 <a href="{{ route('profile.edit') }}" class="block rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700">Edit Profile</a>
-                <a href="{{ route('home') }}" class="block rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700">View Website</a>
                 @if (auth()->user()->role === 'admin')
                     <a href="{{ route('admin.dashboard') }}" class="block rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700">Open Admin Panel</a>
                 @endif

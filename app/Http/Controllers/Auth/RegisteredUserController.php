@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmployerProfile;
 use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -41,8 +42,16 @@ class RegisteredUserController extends Controller
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
             'role' => $role,
+            'is_active' => true,
             'password' => Hash::make($validated['password']),
         ]);
+
+        if ($role === 'employer') {
+            EmployerProfile::query()->firstOrCreate(
+                ['user_id' => $user->id],
+                ['company_name' => $user->full_name.' Company']
+            );
+        }
 
         event(new Registered($user));
 

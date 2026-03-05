@@ -17,10 +17,27 @@ class Resume extends Model
         'user_id',
         'file_path',
         'original_name',
+        'file_size',
+        'mime_type',
+    ];
+
+    protected $appends = [
+        'url',
+        'download_url',
     ];
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return route('resumes.show', $this);
+    }
+
+    public function getDownloadUrlAttribute(): string
+    {
+        return route('resumes.download', $this);
     }
 }

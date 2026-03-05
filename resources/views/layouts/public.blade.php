@@ -20,7 +20,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body data-page="@yield('page_id', 'default')" class="page-enter text-slate-900 antialiased">
+<body data-page="@yield('page_id', 'default')" data-page-transitions="off" class="text-slate-900 antialiased">
     <header x-data="{ open: false }" class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
         <div class="mx-auto flex h-[4.5rem] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <a href="{{ route('home') }}" class="flex items-center gap-3">
@@ -89,7 +89,7 @@
     <main class="pt-20 lg:pt-28">
         @if (session('success'))
             <div class="mx-auto mb-4 mt-4 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                <div data-flash-alert class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
                     {{ session('success') }}
                 </div>
             </div>
@@ -97,7 +97,7 @@
 
         @if (session('error'))
             <div class="mx-auto mb-4 mt-4 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
+                <div data-flash-alert class="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
                     {{ session('error') }}
                 </div>
             </div>

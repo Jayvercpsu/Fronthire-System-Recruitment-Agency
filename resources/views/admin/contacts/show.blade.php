@@ -33,7 +33,15 @@
             </div>
         </dl>
 
-        <form method="POST" action="{{ route('admin.contacts.destroy', $contact) }}" class="mt-6" onsubmit="return confirm('Delete this contact message?');">
+        <form
+            method="POST"
+            action="{{ route('admin.contacts.destroy', $contact) }}"
+            class="mt-6"
+            data-confirm
+            data-confirm-title="Delete contact message"
+            data-confirm-message="Delete this contact message?"
+            data-confirm-button="Delete"
+        >
             @csrf
             @method('DELETE')
             <button type="submit" class="rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 hover:bg-rose-100">Delete Message</button>

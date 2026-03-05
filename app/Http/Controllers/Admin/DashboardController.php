@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Contact;
-use App\Models\Inquiry;
-use App\Models\Resume;
+use App\Models\Application;
+use App\Models\Job;
 use App\Models\User;
 use Illuminate\View\View;
 
@@ -15,12 +14,12 @@ class DashboardController extends Controller
     {
         return view('admin.dashboard', [
             'stats' => [
-                'users_total' => User::query()->count(),
                 'employers_total' => User::query()->where('role', 'employer')->count(),
                 'job_seekers_total' => User::query()->where('role', 'job_seeker')->count(),
-                'inquiries_total' => Inquiry::query()->count(),
-                'contacts_total' => Contact::query()->count(),
-                'resumes_total' => Resume::query()->count(),
+                'jobs_total' => Job::query()->count(),
+                'applications_total' => Application::query()->count(),
+                'active_jobs' => Job::query()->where('status', Job::STATUS_PUBLISHED)->count(),
+                'hired_total' => Application::query()->where('status', Application::STATUS_HIRED)->count(),
             ],
         ]);
     }

@@ -19,6 +19,7 @@ class AdminUserSeeder extends Seeder
                 'first_name' => 'FrontHire',
                 'last_name' => 'Admin',
                 'role' => 'admin',
+                'is_active' => true,
                 'phone' => '+1 (403) 702-0088',
                 'email_verified_at' => now(),
                 'password' => Hash::make('Admin@12345!'),

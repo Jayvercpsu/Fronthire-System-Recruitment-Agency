@@ -29,7 +29,12 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'role' => fake()->randomElement(['employer', 'job_seeker']),
+            'is_active' => true,
             'phone' => fake()->optional()->numerify('+1 (###) ###-####'),
+            'headline' => fake()->optional()->jobTitle(),
+            'bio' => fake()->optional()->sentence(16),
+            'skills' => fake()->optional()->randomElements(['Communication', 'Forklift', 'Customer Service', 'Teamwork', 'Data Entry'], 3),
+            'location' => fake()->optional()->city(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];

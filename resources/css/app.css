@@ -12,11 +12,22 @@
 @layer base {
     html {
         scroll-behavior: smooth;
+        max-width: 100%;
+        overflow-x: clip;
     }
 
     body {
         font-family: 'Manrope', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         background: linear-gradient(180deg, #f1f8f4 0%, #eef8f2 38%, #f7fbf9 100%);
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    @supports not (overflow: clip) {
+        html,
+        body {
+            overflow-x: hidden;
+        }
     }
 
     .font-heading {
@@ -66,7 +77,13 @@
     }
 
     .card-soft {
-        @apply rounded-2xl border border-emerald-100 bg-white/95 p-6 shadow-sm shadow-emerald-100/40;
+        @apply rounded-2xl border border-emerald-100 bg-white/95 p-6 shadow-lg shadow-emerald-100/50 backdrop-blur-[1px] transition duration-300;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .card-soft:hover {
+        transform: translate3d(0, -3px, 0);
+        box-shadow: 0 24px 45px -26px rgba(6, 95, 70, 0.42);
     }
 
     .eyebrow {
@@ -75,6 +92,7 @@
 
     .section-title {
         @apply mt-3 font-heading text-3xl font-bold leading-tight text-slate-900 sm:text-4xl;
+        text-wrap: balance;
     }
 
     .badge-step {

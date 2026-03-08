@@ -5,17 +5,20 @@
 @section('page_id', 'job-seekers')
 
 @section('content')
-<section class="relative overflow-hidden bg-gradient-to-r from-[#146642] via-[#2f9f58] to-[#d6e6bd] text-white">
+<section class="relative overflow-hidden text-white">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573496130141-209d200cebd8?auto=format&fit=crop&w=2200&q=80')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-700/65 to-lime-700/35"></div>
     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0); background-size: 22px 22px;"></div>
+    <div class="absolute -bottom-20 left-10 h-72 w-[30rem] rounded-[100%] border border-white/25 bg-gradient-to-r from-emerald-700/25 to-lime-200/20"></div>
     <div class="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-24">
         <div data-reveal data-aos="fade-up" data-aos-delay="80">
-            <p class="eyebrow bg-white/15 text-emerald-100">For Job Seekers</p>
-            <h1 class="mt-3 font-heading text-4xl font-extrabold sm:text-5xl">Find opportunities that match your skills and goals.</h1>
-            <p class="mt-4 max-w-2xl text-emerald-50">FrontHire helps candidates discover roles faster with real support and clear communication.</p>
-            <a href="{{ route('register', ['role' => 'job_seeker']) }}" class="mt-7 inline-flex rounded-xl bg-white px-5 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50">Create Job Seeker Account</a>
+            <p class="mb-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">For Job Seekers</p>
+            <h1 class="font-heading text-4xl font-extrabold leading-tight text-white drop-shadow sm:text-6xl">Find opportunities that match your skills and goals.</h1>
+            <p class="mt-5 max-w-2xl text-base leading-relaxed text-emerald-50 sm:text-lg">FrontHire helps candidates discover quality roles faster with clear communication, transparent updates, and real recruiter support.</p>
+            <a href="{{ route('register', ['role' => 'job_seeker']) }}" class="mt-8 inline-flex rounded-xl bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-lg shadow-emerald-900/20 transition hover:bg-emerald-50">Create Job Seeker Account</a>
         </div>
         <div data-reveal data-aos="fade-left" data-aos-delay="120">
-            <img src="https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&w=1200&q=80" alt="Job seeker preparing for interview" class="h-full w-full rounded-3xl object-cover shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&w=1400&q=80" alt="Job seeker preparing for interview" class="h-full w-full rounded-3xl border border-white/30 object-cover shadow-2xl">
         </div>
     </div>
 </section>

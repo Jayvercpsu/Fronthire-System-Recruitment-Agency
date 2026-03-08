@@ -46,21 +46,29 @@ window.addEventListener('pageshow', () => {
 function initAosAnimations() {
     const revealOnlyElements = document.querySelectorAll('[data-reveal]:not([data-aos])');
 
-    revealOnlyElements.forEach((element) => {
+    revealOnlyElements.forEach((element, index) => {
         element.setAttribute('data-aos', 'fade-up');
 
         if (!element.hasAttribute('data-aos-duration')) {
-            element.setAttribute('data-aos-duration', '700');
+            element.setAttribute('data-aos-duration', '860');
+        }
+
+        if (!element.hasAttribute('data-aos-delay')) {
+            element.setAttribute('data-aos-delay', String((index % 6) * 60));
+        }
+
+        if (!element.hasAttribute('data-aos-anchor-placement')) {
+            element.setAttribute('data-aos-anchor-placement', 'top-bottom');
         }
     });
 
     AOS.init({
-        duration: 760,
+        duration: 860,
         delay: 0,
-        easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        once: true,
-        mirror: false,
-        offset: 48,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        once: false,
+        mirror: true,
+        offset: 24,
         disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     });
 

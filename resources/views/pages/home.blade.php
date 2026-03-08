@@ -5,27 +5,31 @@
 @section('page_id', 'home')
 
 @section('content')
-<section id="hero" class="relative overflow-hidden bg-gradient-to-r from-[#238f3e] via-[#74bf62] to-[#d7e4be] text-white">
-    <div class="absolute inset-0 opacity-25" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.38) 1px, transparent 0); background-size: 24px 24px;"></div>
-    <div class="absolute -bottom-24 -left-20 h-96 w-[42rem] rounded-[100%] bg-gradient-to-r from-emerald-900/45 via-emerald-600/30 to-lime-300/40 blur-sm"></div>
-    <div class="absolute -bottom-20 left-10 h-72 w-[30rem] rounded-[100%] border border-white/25 bg-gradient-to-r from-emerald-700/25 to-lime-200/20"></div>
+<section id="hero" class="relative overflow-hidden text-white">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&w=2200&q=80')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-700/65 to-lime-700/35"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0); background-size: 24px 24px;"></div>
+    <div class="absolute -bottom-24 -left-16 h-96 w-[42rem] rounded-[100%] bg-gradient-to-r from-emerald-900/50 via-emerald-600/35 to-lime-300/35 blur-sm"></div>
+    <div class="absolute -bottom-20 left-10 h-72 w-[30rem] rounded-[100%] border border-white/25 bg-gradient-to-r from-emerald-700/30 to-lime-200/20"></div>
 
-    <div class="relative mx-auto grid w-full max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
-        <div data-reveal data-aos="fade-up" data-aos-delay="80">
-            <p class="mb-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">Calgary Recruitment Partner</p>
-            <h1 class="font-heading text-4xl font-extrabold leading-tight text-white drop-shadow sm:text-6xl">Connecting reliable talent with growing businesses</h1>
-            <p class="mt-5 max-w-xl text-base leading-relaxed text-emerald-50 sm:text-lg">FrontHire Manpower Agency provides skilled, pre-screened workers ready to perform from Day One.</p>
-            <div class="mt-8 flex flex-wrap gap-3">
-                <a href="{{ route('employers') }}" class="btn-gold">Hire Staff</a>
-                <a href="{{ route('job-seekers') }}" class="btn-white-outline">Find Jobs</a>
+    <div class="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+        <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <div data-reveal data-aos="fade-up" data-aos-delay="60">
+                <p class="mb-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">Calgary Recruitment Partner</p>
+                <h1 class="font-heading text-4xl font-extrabold leading-tight text-white drop-shadow sm:text-6xl">Empowering your workforce frontline with trusted recruitment</h1>
+                <p class="mt-5 max-w-2xl text-base leading-relaxed text-emerald-50 sm:text-lg">FrontHire Manpower Agency connects reliable, skilled candidates with growing teams through fast screening, clear communication, and placement support.</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <a href="{{ route('employers') }}" class="btn-gold">Hire Staff</a>
+                    <a href="{{ route('job-seekers') }}" class="btn-white-outline">Find Jobs</a>
+                </div>
             </div>
-        </div>
 
-        <div data-reveal data-aos="fade-left" data-aos-delay="120" class="relative">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" alt="FrontHire professionals ready for work" class="h-full w-full rounded-3xl border border-white/30 object-cover shadow-2xl">
-            <div class="absolute -bottom-6 left-6 rounded-2xl border border-emerald-200/40 bg-white/92 px-5 py-4 text-slate-900 shadow-xl">
-                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Placement Success</p>
-                <p class="mt-1 text-2xl font-extrabold">95%</p>
+            <div data-reveal data-aos="fade-left" data-aos-delay="120" class="relative">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1500&q=80" alt="FrontHire professionals ready for work" class="h-full w-full rounded-3xl border border-white/35 object-cover shadow-2xl">
+                <div class="absolute -bottom-6 left-6 rounded-2xl border border-emerald-200/40 bg-white/92 px-5 py-4 text-slate-900 shadow-xl backdrop-blur-sm">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Placement Success</p>
+                    <p class="mt-1 text-2xl font-extrabold text-white">95%</p>
+                </div>
             </div>
         </div>
     </div>
@@ -98,6 +102,33 @@
         <div data-reveal data-aos="fade-up" data-aos-delay="170" class="card-soft flex items-center gap-3"><i class="ri-tools-line text-2xl text-emerald-600"></i><span class="font-semibold text-slate-800">Manufacturing</span></div>
         <div data-reveal data-aos="fade-up" data-aos-delay="200" class="card-soft flex items-center gap-3"><i class="ri-store-2-line text-2xl text-emerald-600"></i><span class="font-semibold text-slate-800">Retail</span></div>
         <div data-reveal data-aos="fade-up" data-aos-delay="230" class="card-soft flex items-center gap-3"><i class="ri-heart-pulse-line text-2xl text-emerald-600"></i><span class="font-semibold text-slate-800">Care Support</span></div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-800 py-16 text-white" data-aos="fade-up" data-aos-delay="70">
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0); background-size: 20px 20px;"></div>
+    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+            <h2 class="font-heading text-3xl font-extrabold sm:text-5xl">Employers Value Workplace Diversity</h2>
+            <p class="mt-4 text-sky-100">We support inclusive hiring pipelines that create stronger teams and long-term business growth.</p>
+        </div>
+        <div class="mt-10 grid gap-5 md:grid-cols-3">
+            <article data-reveal data-aos="fade-up" data-aos-delay="90" class="rounded-3xl border border-white/40 bg-white/95 p-6 text-center text-slate-800 shadow-xl">
+                <i class="ri-global-line text-3xl text-sky-600"></i>
+                <h3 class="mt-3 font-heading text-xl font-bold text-sky-700">Perfect For Immigrants</h3>
+                <p class="mt-3 text-sm leading-relaxed">Skilled immigrant in Canada? We connect you with inclusive employers that match your strengths.</p>
+            </article>
+            <article data-reveal data-aos="fade-up" data-aos-delay="130" class="rounded-3xl border border-white/40 bg-white/95 p-6 text-center text-slate-800 shadow-xl">
+                <i class="ri-team-line text-3xl text-sky-600"></i>
+                <h3 class="mt-3 font-heading text-xl font-bold text-sky-700">Perfect For Employers</h3>
+                <p class="mt-3 text-sm leading-relaxed">Build diverse teams with reliable candidates who are motivated, dedicated, and ready to contribute.</p>
+            </article>
+            <article data-reveal data-aos="fade-up" data-aos-delay="170" class="rounded-3xl border border-white/40 bg-white/95 p-6 text-center text-slate-800 shadow-xl">
+                <i class="ri-bar-chart-grouped-line text-3xl text-sky-600"></i>
+                <h3 class="mt-3 font-heading text-xl font-bold text-sky-700">A Win-Win For All</h3>
+                <p class="mt-3 text-sm leading-relaxed">Positive hiring outcomes for businesses and candidates through practical recruitment strategy.</p>
+            </article>
+        </div>
     </div>
 </section>
 

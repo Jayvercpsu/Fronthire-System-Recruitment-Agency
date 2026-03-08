@@ -5,13 +5,18 @@
 @section('page_id', 'employers')
 
 @section('content')
-<section class="relative overflow-hidden bg-gradient-to-r from-[#1f8e46] via-[#55b961] to-[#cde2b1] text-white">
-    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0); background-size: 22px 22px;"></div>
+<section class="relative isolate overflow-hidden text-white">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=2200&q=80')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/80 via-emerald-700/65 to-lime-700/35"></div>
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.38) 1px, transparent 0); background-size: 24px 24px;"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-14 -left-20 h-64 w-[22rem] rounded-[100%] bg-gradient-to-r from-emerald-900/45 via-emerald-600/30 to-lime-300/40 blur-sm sm:-bottom-24 sm:h-96 sm:w-[42rem]"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-10 left-3 h-40 w-[16rem] rounded-[100%] border border-white/25 bg-gradient-to-r from-emerald-700/25 to-lime-200/20 sm:-bottom-20 sm:left-10 sm:h-72 sm:w-[30rem]"></div>
+
     <div class="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24" data-reveal data-aos="fade-up" data-aos-delay="80">
-        <p class="eyebrow bg-white/20 text-white">For Employers</p>
-        <h1 class="mt-3 max-w-3xl font-heading text-4xl font-extrabold sm:text-5xl">Scale your team with trusted staffing support.</h1>
-        <p class="mt-4 max-w-2xl text-emerald-50">FrontHire helps you hire the right people quickly while keeping quality and compliance in focus.</p>
-        <a href="{{ route('register', ['role' => 'employer']) }}" class="mt-7 inline-flex rounded-xl bg-white px-5 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50">Create Employer Account</a>
+        <p class="mb-4 inline-flex rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">For Employers</p>
+        <h1 class="max-w-4xl font-heading text-3xl font-extrabold leading-tight text-white drop-shadow sm:text-5xl lg:text-6xl">Scale your team with trusted staffing support.</h1>
+        <p class="mt-5 max-w-3xl text-base leading-relaxed text-emerald-50 sm:text-lg">FrontHire helps you hire the right people quickly while keeping quality, productivity, and compliance in focus.</p>
+        <a href="{{ route('register', ['role' => 'employer']) }}" class="mt-8 inline-flex rounded-xl bg-white px-6 py-3 text-sm font-semibold text-emerald-700 shadow-lg shadow-emerald-900/20 transition hover:bg-emerald-50">Create Employer Account</a>
     </div>
 </section>
 
@@ -109,6 +114,16 @@
                 </button>
             </form>
         </div>
+    </div>
+</section>
+
+<section class="relative overflow-hidden py-24 text-white" data-aos="fade-up" data-aos-delay="90">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=2200&q=80')] bg-cover bg-center"></div>
+    <div class="absolute inset-0 bg-slate-900/55"></div>
+    <div class="relative mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
+        <h2 class="font-heading text-4xl font-extrabold tracking-wide sm:text-6xl">Accountants, Engineers, Chefs, Mechanics</h2>
+        <p class="mt-3 text-3xl font-bold sm:text-5xl">What's your field?</p>
+        <a href="{{ route('contact') }}" class="mt-8 inline-flex rounded-xl bg-sky-600 px-8 py-3 text-base font-semibold text-white transition hover:bg-sky-700">Contact Us</a>
     </div>
 </section>
 @endsection

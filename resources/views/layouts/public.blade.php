@@ -129,8 +129,8 @@
                 <h3 class="font-heading text-base font-bold text-slate-900">Social</h3>
                 <div class="mt-4 space-y-2 text-sm text-slate-600">
                     <p><a href="https://www.facebook.com/share/1AbajhWJ6j/?mibextid=wwXIfr" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-emerald-700"><i class="ri-facebook-circle-line"></i>Facebook</a></p>
-                    <p class="inline-flex items-center gap-2"><i class="ri-linkedin-box-line text-slate-400"></i>LinkedIn: Coming soon</p>
-                    <p class="inline-flex items-center gap-2"><i class="ri-instagram-line text-slate-400"></i>Instagram: Coming soon</p>
+                    {{-- <p class="inline-flex items-center gap-2"><i class="ri-linkedin-box-line text-slate-400"></i>LinkedIn: Coming soon</p>
+                    <p class="inline-flex items-center gap-2"><i class="ri-instagram-line text-slate-400"></i>Instagram: Coming soon</p> --}}
                 </div>
             </div>
         </div>

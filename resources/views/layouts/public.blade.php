@@ -24,7 +24,7 @@
     <header x-data="{ open: false }" class="fixed inset-x-0 top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
         <div class="mx-auto flex h-[4.5rem] w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <a href="{{ route('home') }}" class="flex items-center gap-3">
-                <img src="{{ asset('images/logo/fronthire.png') }}" alt="FrontHire recruitment logo" class="h-10 w-auto sm:h-11">
+                <img src="{{ asset('images/logo/fronthire.png') }}" alt="FrontHire recruitment logo" class="h-16 w-16 object-contain sm:h-20 sm:w-20 scale-[2]">
                 <div>
                     <p class="font-heading text-lg font-extrabold leading-none text-slate-900">FrontHire</p>
                     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">Manpower Agency</p>

@@ -7,6 +7,7 @@ use App\Http\Requests\Messaging\StoreMessageRequest;
 use App\Models\Conversation;
 use App\Models\User;
 use App\Notifications\SystemNotification;
+use App\Services\MediaStorageService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -14,23 +15,17 @@ use Illuminate\View\View;
 
 class ConversationController extends Controller
 {
+    public function __construct(
+        private readonly MediaStorageService $mediaStorage
+    ) {}
+
     public function index(Request $request): View
     {
         $conversations = $this->buildConversationList($request);
-        $activeConversation = $conversations->first();
-
-        if ($activeConversation) {
-            $this->markConversationAsRead($activeConversation, $request);
-        }
 
         return view('dashboards.shared.chat.index', [
             'conversations' => $conversations,
-            'activeConversation' => $activeConversation?->load([
-                'messages.sender:id,first_name,last_name',
-                'application.job:id,title,employer_id',
-                'application.job.employer:id,first_name,last_name',
-                'application.job.employer.employerProfile:id,user_id,company_name',
-            ]),
+            'activeConversation' => null,
         ]);
     }
 
@@ -68,7 +63,7 @@ class ConversationController extends Controller
 
         if ($request->hasFile('attachment')) {
             $file = $request->file('attachment');
-            $path = $file->store("chat-attachments/{$conversation->id}/{$request->user()->id}", 'public');
+            $path = $this->mediaStorage->store($file, "chat-attachments/{$conversation->id}/{$request->user()->id}");
 
             $payload['attachment_path'] = $path;
             $payload['attachment_original_name'] = $file->getClientOriginalName();

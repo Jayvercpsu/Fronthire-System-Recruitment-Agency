@@ -7,7 +7,7 @@
     </x-slot>
 
     <div class="grid gap-4 lg:grid-cols-3">
-        <aside class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <aside class="rounded-2xl border border-slate-200 bg-white shadow-sm {{ $activeConversation ? 'hidden lg:block' : 'block' }}">
             <div class="border-b border-slate-200 px-4 py-3">
                 <h2 class="font-heading text-lg font-bold text-slate-900">Conversations</h2>
             </div>
@@ -46,7 +46,7 @@
             </div>
         </aside>
 
-        <section class="rounded-2xl border border-slate-200 bg-white shadow-sm lg:col-span-2">
+        <section class="rounded-2xl border border-slate-200 bg-white shadow-sm lg:col-span-2 {{ $activeConversation ? 'block' : 'hidden lg:block' }}">
             @if ($activeConversation)
                 <div class="border-b border-slate-200 px-4 py-3">
                     @php
@@ -64,6 +64,12 @@
                             ?? 'Company';
                         $jobTitle = $activeJob?->title ?? 'Application Chat';
                     @endphp
+                    <a
+                        href="{{ route('chat.index') }}"
+                        class="mb-3 inline-flex rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 lg:hidden"
+                    >
+                        Back to Conversations
+                    </a>
                     <h2 class="font-heading text-lg font-bold text-slate-900">{{ $otherUser?->full_name ?? 'Conversation' }}</h2>
                     <p class="text-xs text-slate-500">{{ $jobTitle }} | {{ $companyName }}</p>
                 </div>
@@ -97,7 +103,7 @@
                                 id="chat-attachment-input"
                                 type="file"
                                 name="attachment"
-                                accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.webp,.txt"
+                                accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.csv,.png,.jpg,.jpeg,.webp,.gif,.mp4,.mov,.avi,.webm,.mkv,.txt"
                                 class="hidden"
                                 data-chat-attachment-input
                             >

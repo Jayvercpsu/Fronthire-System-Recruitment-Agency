@@ -9,6 +9,7 @@ use App\Models\Conversation;
 use App\Models\Job;
 use App\Models\Resume;
 use App\Notifications\SystemNotification;
+use App\Services\MediaStorageService;
 use App\Support\AuditLogger;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,6 +17,10 @@ use Illuminate\View\View;
 
 class ApplicationController extends Controller
 {
+    public function __construct(
+        private readonly MediaStorageService $mediaStorage
+    ) {}
+
     public function index(Request $request): View
     {
         $query = Application::query()
@@ -63,7 +68,7 @@ class ApplicationController extends Controller
 
         if ($request->hasFile('resume')) {
             $file = $request->file('resume');
-            $path = $file->store('resumes/'.$request->user()->id, 'public');
+            $path = $this->mediaStorage->store($file, 'resumes/'.$request->user()->id);
 
             $uploadedResume = Resume::query()->create([
                 'user_id' => $request->user()->id,

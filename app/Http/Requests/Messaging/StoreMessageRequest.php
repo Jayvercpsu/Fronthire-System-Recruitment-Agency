@@ -19,7 +19,7 @@ class StoreMessageRequest extends FormRequest
                 'nullable',
                 'file',
                 'max:5120',
-                'mimes:pdf,doc,docx,png,jpg,jpeg,webp,txt',
+                'mimes:pdf,doc,docx,ppt,pptx,xls,xlsx,csv,png,jpg,jpeg,webp,gif,mp4,mov,avi,webm,mkv,txt',
                 'required_without:body',
             ],
         ];

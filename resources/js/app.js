@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollspy();
     initBackToTop();
     initPageTransitions();
+    initFormButtonLoading();
     initActionConfirmations();
     initFlashAlerts();
     initChatMessaging();
@@ -35,6 +36,7 @@ window.addEventListener('load', () => {
 
 window.addEventListener('pageshow', () => {
     document.body.classList.remove('page-leaving');
+    resetLoadingButtons();
 
     if (!hasInitializedAos) {
         return;
@@ -309,6 +311,7 @@ function initActionConfirmations() {
 
         const formToSubmit = pendingForm;
         closeModal();
+        setFormLoadingState(formToSubmit);
         formToSubmit.submit();
     });
 
@@ -336,6 +339,107 @@ function initActionConfirmations() {
         },
         { capture: true }
     );
+}
+
+function initFormButtonLoading() {
+    document.addEventListener(
+        'submit',
+        (event) => {
+            const form = event.target;
+
+            if (!(form instanceof HTMLFormElement)) {
+                return;
+            }
+
+            if (form.hasAttribute('data-chat-form') || form.hasAttribute('data-no-loading')) {
+                return;
+            }
+
+            if (form.hasAttribute('data-confirm')) {
+                return;
+            }
+
+            setFormLoadingState(form, event.submitter);
+        },
+        { capture: true }
+    );
+}
+
+/**
+ * @param {HTMLFormElement} form
+ * @param {HTMLElement | null | undefined} submitter
+ */
+function setFormLoadingState(form, submitter = null) {
+    if (form.dataset.submitting === '1') {
+        return;
+    }
+
+    form.dataset.submitting = '1';
+
+    const submitButtons = Array.from(
+        form.querySelectorAll('button[type="submit"], button:not([type]), input[type="submit"]')
+    );
+
+    if (!submitButtons.length) {
+        return;
+    }
+
+    submitButtons.forEach((button) => {
+        if (button instanceof HTMLButtonElement) {
+            if (!button.dataset.loadingOriginalHtml) {
+                button.dataset.loadingOriginalHtml = button.innerHTML;
+            }
+            button.disabled = true;
+        }
+
+        if (button instanceof HTMLInputElement) {
+            if (!button.dataset.loadingOriginalValue) {
+                button.dataset.loadingOriginalValue = button.value;
+            }
+            button.disabled = true;
+        }
+    });
+
+    const activeButton =
+        submitter instanceof HTMLButtonElement || submitter instanceof HTMLInputElement
+            ? submitter
+            : submitButtons[0];
+
+    const loadingText =
+        activeButton.dataset.loadingText ||
+        form.dataset.loadingText ||
+        'Loading...';
+
+    if (activeButton instanceof HTMLButtonElement) {
+        activeButton.innerHTML = `<span class="inline-flex items-center gap-2"><span class="inline-block h-2 w-2 animate-pulse rounded-full bg-current"></span>${loadingText}</span>`;
+    } else if (activeButton instanceof HTMLInputElement) {
+        activeButton.value = loadingText;
+    }
+}
+
+function resetLoadingButtons() {
+    const forms = document.querySelectorAll('form[data-submitting="1"]');
+
+    forms.forEach((form) => {
+        form.dataset.submitting = '0';
+
+        const buttons = form.querySelectorAll('button[type="submit"], button:not([type]), input[type="submit"]');
+        buttons.forEach((button) => {
+            if (button instanceof HTMLButtonElement) {
+                if (button.dataset.loadingOriginalHtml) {
+                    button.innerHTML = button.dataset.loadingOriginalHtml;
+                }
+                button.disabled = false;
+            }
+
+            if (button instanceof HTMLInputElement) {
+                if (button.dataset.loadingOriginalValue) {
+                    button.value = button.dataset.loadingOriginalValue;
+                }
+                button.disabled = false;
+            }
+        });
+    });
 }
 
 function initFlashAlerts() {

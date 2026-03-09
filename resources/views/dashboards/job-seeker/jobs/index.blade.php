@@ -74,7 +74,7 @@
                         @endif
                     </div>
                 </div>
-                <p class="mt-3 text-sm leading-relaxed text-slate-700">{{ \Illuminate\Support\Str::limit($job->description, 220) }}</p>
+                <p class="mt-3 break-all text-sm leading-relaxed text-slate-700">{{ \Illuminate\Support\Str::limit($job->description, 220) }}</p>
             </article>
         @empty
             <section class="rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-600">

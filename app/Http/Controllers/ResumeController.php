@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreResumeRequest;
 use App\Models\Resume;
+use App\Services\MediaStorageService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class ResumeController extends Controller
 {
+    public function __construct(
+        private readonly MediaStorageService $mediaStorage
+    ) {}
+
     public function store(StoreResumeRequest $request): RedirectResponse
     {
         $file = $request->file('resume');
 
-        $path = $file->store('resumes/'.$request->user()->id, 'public');
+        $path = $this->mediaStorage->store($file, 'resumes/'.$request->user()->id);
 
         Resume::query()->create([
             'user_id' => $request->user()->id,
@@ -27,30 +31,40 @@ class ResumeController extends Controller
         return back()->with('success', 'Resume uploaded successfully.');
     }
 
-    public function show(Resume $resume): BinaryFileResponse
+    public function show(Resume $resume): Response
     {
         $this->authorize('view', $resume);
 
-        $disk = Storage::disk('public');
-        abort_unless($disk->exists($resume->file_path), 404);
+        if ($this->mediaStorage->isRemotePath($resume->file_path)) {
+            return redirect()->away($resume->file_path);
+        }
+
+        $absolutePath = $this->mediaStorage->localAbsolutePath($resume->file_path);
+        abort_unless($absolutePath !== null && file_exists($absolutePath), 404);
 
         $safeName = str_replace('"', '', $resume->original_name);
 
-        return response()->file($disk->path($resume->file_path), [
+        return response()->file($absolutePath, [
             'Content-Type' => $resume->mime_type ?: 'application/octet-stream',
             'Content-Disposition' => 'inline; filename="'.$safeName.'"',
         ]);
     }
 
-    public function download(Resume $resume): BinaryFileResponse
+    public function download(Resume $resume): Response
     {
         $this->authorize('view', $resume);
 
-        $disk = Storage::disk('public');
-        abort_unless($disk->exists($resume->file_path), 404);
+        if ($this->mediaStorage->isRemotePath($resume->file_path)) {
+            $downloadUrl = $this->mediaStorage->cloudinaryDownloadUrl($resume->file_path) ?? $resume->file_path;
+
+            return redirect()->away($downloadUrl);
+        }
+
+        $absolutePath = $this->mediaStorage->localAbsolutePath($resume->file_path);
+        abort_unless($absolutePath !== null && file_exists($absolutePath), 404);
 
         return response()->download(
-            $disk->path($resume->file_path),
+            $absolutePath,
             $resume->original_name,
             ['Content-Type' => $resume->mime_type ?: 'application/octet-stream']
         );
@@ -60,7 +74,7 @@ class ResumeController extends Controller
     {
         $this->authorize('delete', $resume);
 
-        Storage::disk('public')->delete($resume->file_path);
+        $this->mediaStorage->delete($resume->file_path);
         $resume->delete();
 
         return back()->with('success', 'Resume deleted successfully.');

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Services\MediaStorageService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Storage;
 
 class EmployerProfile extends Model
 {
@@ -37,7 +37,6 @@ class EmployerProfile extends Model
             return null;
         }
 
-        return Storage::disk('public')->url($this->logo_path);
+        return app(MediaStorageService::class)->url($this->logo_path);
     }
 }
-

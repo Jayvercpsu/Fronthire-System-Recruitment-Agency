@@ -12,7 +12,7 @@
     <div class="grid gap-6 lg:grid-cols-3">
         <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm lg:col-span-2">
             <h2 class="font-heading text-lg font-bold text-slate-900">Job Description</h2>
-            <p class="mt-3 whitespace-pre-line text-sm leading-relaxed text-slate-700">{{ $job->description }}</p>
+            <p class="mt-3 whitespace-pre-line break-all text-sm leading-relaxed text-slate-700">{{ $job->description }}</p>
 
             @if (! empty($job->required_skills))
                 <h3 class="mt-6 text-sm font-semibold uppercase tracking-wide text-slate-500">Required Skills</h3>
@@ -48,7 +48,7 @@
 
             @if ($job->requirements)
                 <h3 class="mt-6 text-sm font-semibold uppercase tracking-wide text-slate-500">Requirements</h3>
-                <p class="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-700">{{ $job->requirements }}</p>
+                <p class="mt-2 whitespace-pre-line break-all text-sm leading-relaxed text-slate-700">{{ $job->requirements }}</p>
             @endif
         </section>
 
@@ -58,7 +58,7 @@
             <p class="text-sm text-slate-600">{{ $job->employer->email }}</p>
 
             @if ($job->employer->employerProfile?->about)
-                <p class="mt-3 text-sm leading-relaxed text-slate-700">{{ $job->employer->employerProfile->about }}</p>
+                <p class="mt-3 break-all text-sm leading-relaxed text-slate-700">{{ $job->employer->employerProfile->about }}</p>
             @endif
 
             <div class="mt-5 border-t border-slate-200 pt-4">

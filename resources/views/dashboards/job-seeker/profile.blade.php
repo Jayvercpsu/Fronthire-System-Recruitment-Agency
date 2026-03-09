@@ -144,12 +144,24 @@
 
                                 <div class="mt-4 h-[65vh] overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
                                     <template x-if="isPdf">
-                                        <iframe :src="previewUrl" class="h-full w-full" title="Resume preview"></iframe>
+                                        <object :data="previewUrl" type="application/pdf" class="h-full w-full">
+                                            <embed :src="previewUrl" type="application/pdf" class="h-full w-full" />
+                                            <div class="flex h-full flex-col items-center justify-center gap-3 px-4 text-center">
+                                                <p class="text-sm text-slate-700">Your browser cannot preview this PDF.</p>
+                                                <div class="flex flex-wrap items-center justify-center gap-2">
+                                                    <a :href="previewUrl" target="_blank" rel="noopener" class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">Open</a>
+                                                    <a :href="downloadUrl" class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">Download</a>
+                                                </div>
+                                            </div>
+                                        </object>
                                     </template>
                                     <template x-if="!isPdf">
                                         <div class="flex h-full flex-col items-center justify-center gap-3 px-4 text-center">
-                                            <p class="text-sm text-slate-700">Preview is available for PDF files only.</p>
-                                            <a :href="downloadUrl" class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">Download File</a>
+                                            <p class="text-sm text-slate-700">Preview is not supported for this file type.</p>
+                                            <div class="flex flex-wrap items-center justify-center gap-2">
+                                                <a :href="previewUrl" target="_blank" rel="noopener" class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">Open</a>
+                                                <a :href="downloadUrl" class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-50">Download</a>
+                                            </div>
                                         </div>
                                     </template>
                                 </div>

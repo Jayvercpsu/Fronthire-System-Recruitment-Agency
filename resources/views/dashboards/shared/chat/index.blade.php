@@ -83,7 +83,7 @@
                                 @endif
 
                                 @if ($message->attachment_url)
-                                    <a href="{{ $message->attachment_url }}" target="_blank" rel="noopener" class="mt-2 inline-flex rounded-lg border {{ $message->sender_id === auth()->id() ? 'border-emerald-100 text-emerald-50 hover:bg-emerald-500' : 'border-slate-300 text-blue-600 hover:bg-slate-50' }} px-2 py-1 text-xs font-semibold">
+                                    <a href="{{ $message->attachment_url }}" target="_blank" rel="noopener" class="mt-2 inline-flex rounded-lg border {{ $message->sender_id === auth()->id() ? 'border-emerald-100 text-emerald-50 hover:bg-emerald-500' : 'border-slate-300 text-emerald-700 hover:bg-emerald-50' }} px-2 py-1 text-xs font-semibold">
                                         {{ $message->attachment_original_name ?? 'Attachment' }}
                                     </a>
                                 @endif

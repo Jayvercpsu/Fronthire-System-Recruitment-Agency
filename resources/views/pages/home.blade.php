@@ -105,27 +105,27 @@
     </div>
 </section>
 
-<section class="relative overflow-hidden bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-800 py-16 text-white" data-aos="fade-up" data-aos-delay="70">
+<section class="relative overflow-hidden bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-700 py-16 text-white" data-aos="fade-up" data-aos-delay="70">
     <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.35) 1px, transparent 0); background-size: 20px 20px;"></div>
     <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-3xl text-center" data-reveal>
             <h2 class="font-heading text-3xl font-extrabold sm:text-5xl">Employers Value Workplace Diversity</h2>
-            <p class="mt-4 text-sky-100">We support inclusive hiring pipelines that create stronger teams and long-term business growth.</p>
+            <p class="mt-4 text-emerald-100">We support inclusive hiring pipelines that create stronger teams and long-term business growth.</p>
         </div>
         <div class="mt-10 grid gap-5 md:grid-cols-3">
             <article data-reveal data-aos="fade-up" data-aos-delay="90" class="rounded-3xl border border-white/40 bg-white/95 p-6 text-center text-slate-800 shadow-xl">
-                <i class="ri-global-line text-3xl text-sky-600"></i>
-                <h3 class="mt-3 font-heading text-xl font-bold text-sky-700">Perfect For Immigrants</h3>
+                <i class="ri-global-line text-3xl text-emerald-600"></i>
+                <h3 class="mt-3 font-heading text-xl font-bold text-emerald-700">Perfect For Immigrants</h3>
                 <p class="mt-3 text-sm leading-relaxed">Skilled immigrant in Canada? We connect you with inclusive employers that match your strengths.</p>
             </article>
             <article data-reveal data-aos="fade-up" data-aos-delay="130" class="rounded-3xl border border-white/40 bg-white/95 p-6 text-center text-slate-800 shadow-xl">
-                <i class="ri-team-line text-3xl text-sky-600"></i>
-                <h3 class="mt-3 font-heading text-xl font-bold text-sky-700">Perfect For Employers</h3>
+                <i class="ri-team-line text-3xl text-emerald-600"></i>
+                <h3 class="mt-3 font-heading text-xl font-bold text-emerald-700">Perfect For Employers</h3>
                 <p class="mt-3 text-sm leading-relaxed">Build diverse teams with reliable candidates who are motivated, dedicated, and ready to contribute.</p>
             </article>
             <article data-reveal data-aos="fade-up" data-aos-delay="170" class="rounded-3xl border border-white/40 bg-white/95 p-6 text-center text-slate-800 shadow-xl">
-                <i class="ri-bar-chart-grouped-line text-3xl text-sky-600"></i>
-                <h3 class="mt-3 font-heading text-xl font-bold text-sky-700">A Win-Win For All</h3>
+                <i class="ri-bar-chart-grouped-line text-3xl text-emerald-600"></i>
+                <h3 class="mt-3 font-heading text-xl font-bold text-emerald-700">A Win-Win For All</h3>
                 <p class="mt-3 text-sm leading-relaxed">Positive hiring outcomes for businesses and candidates through practical recruitment strategy.</p>
             </article>
         </div>

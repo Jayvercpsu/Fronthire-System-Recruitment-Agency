@@ -123,7 +123,7 @@
     <div class="relative mx-auto w-full max-w-7xl px-4 text-center sm:px-6 lg:px-8" data-reveal>
         <h2 class="font-heading text-4xl font-extrabold tracking-wide sm:text-6xl">Accountants, Engineers, Chefs, Mechanics</h2>
         <p class="mt-3 text-3xl font-bold sm:text-5xl">What's your field?</p>
-        <a href="{{ route('contact') }}" class="mt-8 inline-flex rounded-xl bg-sky-600 px-8 py-3 text-base font-semibold text-white transition hover:bg-sky-700">Contact Us</a>
+        <a href="{{ route('contact') }}" class="mt-8 inline-flex rounded-xl bg-emerald-600 px-8 py-3 text-base font-semibold text-white transition hover:bg-emerald-700">Contact Us</a>
     </div>
 </section>
 @endsection

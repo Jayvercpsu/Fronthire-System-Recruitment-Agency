@@ -65,7 +65,7 @@ class Message extends Model
         $linkified = preg_replace_callback($pattern, static function (array $matches): string {
             $url = e($matches[1]);
 
-            return '<a href="'.$url.'" target="_blank" rel="noopener" class="underline text-blue-600 hover:text-blue-700">'.$url.'</a>';
+            return '<a href="'.$url.'" target="_blank" rel="noopener" class="underline text-emerald-700 hover:text-emerald-800">'.$url.'</a>';
         }, $escapedBody);
 
         return nl2br($linkified ?? $escapedBody);

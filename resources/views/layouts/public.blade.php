@@ -120,7 +120,7 @@
                 <h3 class="font-heading text-base font-bold text-slate-900">Contact</h3>
                 <ul class="mt-4 space-y-2 text-sm text-slate-600">
                     <li><i class="ri-mail-line mr-2 text-emerald-700"></i><a href="mailto:hello@fronthire.ca" class="hover:text-emerald-700">hello@fronthire.ca</a></li>
-                    <li><i class="ri-phone-line mr-2 text-emerald-700"></i><a href="tel:+14037020088" class="hover:text-emerald-700">+1 (403) 702-0088</a></li>
+                    <li><i class="ri-phone-line mr-2 text-emerald-700"></i><a href="tel:+14037020088" class="hover:text-emerald-700">+1(403) 835-3226</a></li>
                     <li><i class="ri-map-pin-line mr-2 text-emerald-700"></i>Unit 127 1717 60 st Southeast Calgary, Alberta T2A 7Y7</li>
                 </ul>
             </div>

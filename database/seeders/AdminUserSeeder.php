@@ -20,7 +20,7 @@ class AdminUserSeeder extends Seeder
                 'last_name' => 'Admin',
                 'role' => 'admin',
                 'is_active' => true,
-                'phone' => '+1 (403) 702-0088',
+                'phone' => '+1(403) 835-3226',
                 'email_verified_at' => now(),
                 'password' => Hash::make('Admin@12345!'),
             ]

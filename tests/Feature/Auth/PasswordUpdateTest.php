@@ -11,6 +11,38 @@ class PasswordUpdateTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_current_password_can_be_verified_before_updating(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->postJson('/password/verify-current', [
+                'current_password' => 'password',
+            ]);
+
+        $response
+            ->assertOk()
+            ->assertJson([
+                'verified' => true,
+            ]);
+    }
+
+    public function test_wrong_current_password_cannot_be_verified_before_updating(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->postJson('/password/verify-current', [
+                'current_password' => 'wrong-password',
+            ]);
+
+        $response
+            ->assertStatus(422)
+            ->assertJsonValidationErrors('current_password');
+    }
+
     public function test_password_can_be_updated(): void
     {
         $user = User::factory()->create();

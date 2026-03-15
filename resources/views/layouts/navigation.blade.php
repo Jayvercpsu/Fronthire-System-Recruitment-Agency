@@ -13,17 +13,20 @@
                 <a href="{{ route('employer.jobs.index') }}" class="text-sm font-semibold {{ request()->routeIs('employer.jobs.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Jobs</a>
                 <a href="{{ route('employer.company-profile.edit') }}" class="text-sm font-semibold {{ request()->routeIs('employer.company-profile.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Company</a>
                 <a href="{{ route('chat.index') }}" class="text-sm font-semibold {{ request()->routeIs('chat.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Messages</a>
+                <a href="{{ route('profile.edit') }}" class="text-sm font-semibold {{ request()->routeIs('profile.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Account</a>
             @elseif (auth()->user()->role === 'job_seeker')
                 <a href="{{ route('job-seeker.dashboard') }}" class="text-sm font-semibold {{ request()->routeIs('job-seeker.dashboard') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Overview</a>
                 <a href="{{ route('job-seeker.jobs.index') }}" class="text-sm font-semibold {{ request()->routeIs('job-seeker.jobs.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Browse Jobs</a>
                 <a href="{{ route('job-seeker.applications.index') }}" class="text-sm font-semibold {{ request()->routeIs('job-seeker.applications.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Applications</a>
                 <a href="{{ route('job-seeker.profile.edit') }}" class="text-sm font-semibold {{ request()->routeIs('job-seeker.profile.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Profile Builder</a>
                 <a href="{{ route('chat.index') }}" class="text-sm font-semibold {{ request()->routeIs('chat.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Messages</a>
+                <a href="{{ route('profile.edit') }}" class="text-sm font-semibold {{ request()->routeIs('profile.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Account</a>
             @else
                 <a href="{{ route('admin.dashboard') }}" class="text-sm font-semibold {{ request()->routeIs('admin.dashboard') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Overview</a>
                 <a href="{{ route('admin.users.index') }}" class="text-sm font-semibold {{ request()->routeIs('admin.users.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Users</a>
                 <a href="{{ route('admin.jobs.index') }}" class="text-sm font-semibold {{ request()->routeIs('admin.jobs.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Jobs</a>
                 <a href="{{ route('admin.applications.index') }}" class="text-sm font-semibold {{ request()->routeIs('admin.applications.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Applications</a>
+                <a href="{{ route('profile.edit') }}" class="text-sm font-semibold {{ request()->routeIs('profile.*') ? 'text-emerald-700' : 'text-slate-600 hover:text-emerald-700' }}">Account</a>
             @endif
         </div>
 
@@ -38,10 +41,10 @@
                     </span>
                 @endif
             </a>
-            <div class="text-right">
+            <a href="{{ route('profile.edit') }}" class="text-right">
                 <p class="text-sm font-semibold text-slate-900">{{ auth()->user()->full_name }}</p>
                 <p class="text-xs uppercase tracking-wide text-slate-500">{{ str_replace('_', ' ', auth()->user()->role) }}</p>
-            </div>
+            </a>
             <button type="button" @click="showLogoutModal = true" class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600">
                 Log out
             </button>
@@ -61,17 +64,20 @@
                 <a href="{{ route('employer.jobs.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Jobs</a>
                 <a href="{{ route('employer.company-profile.edit') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Company</a>
                 <a href="{{ route('chat.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Messages</a>
+                <a href="{{ route('profile.edit') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Account</a>
             @elseif (auth()->user()->role === 'job_seeker')
                 <a href="{{ route('job-seeker.dashboard') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Overview</a>
                 <a href="{{ route('job-seeker.jobs.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Browse Jobs</a>
                 <a href="{{ route('job-seeker.applications.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Applications</a>
                 <a href="{{ route('job-seeker.profile.edit') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Profile Builder</a>
                 <a href="{{ route('chat.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Messages</a>
+                <a href="{{ route('profile.edit') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Account</a>
             @else
                 <a href="{{ route('admin.dashboard') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Overview</a>
                 <a href="{{ route('admin.users.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Users</a>
                 <a href="{{ route('admin.jobs.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Jobs</a>
                 <a href="{{ route('admin.applications.index') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Applications</a>
+                <a href="{{ route('profile.edit') }}" class="block rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Account</a>
             @endif
 
             <a href="{{ route('notifications.index') }}" class="flex items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">
@@ -83,7 +89,7 @@
         </div>
 
         <div class="border-t border-slate-200 px-4 py-3">
-            <p class="text-sm font-semibold text-slate-900">{{ auth()->user()->full_name }}</p>
+            <a href="{{ route('profile.edit') }}" class="block text-sm font-semibold text-slate-900">{{ auth()->user()->full_name }}</a>
             <p class="text-xs uppercase tracking-wide text-slate-500">{{ str_replace('_', ' ', auth()->user()->role) }}</p>
             <button type="button" @click="showLogoutModal = true; open = false" class="mt-3 w-full rounded-xl border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 hover:border-rose-200 hover:bg-rose-50 hover:text-rose-600">
                 Log out
